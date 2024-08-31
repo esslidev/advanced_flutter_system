@@ -10,7 +10,6 @@ class RemoteUserBloc extends Bloc<RemoteUserEvent, RemoteUserState> {
 
   RemoteUserBloc(this._userUseCases) : super(const RemoteUserInitial()) {
     on<GetUser>(onGetUser);
-    on<GetUsers>(onGetUsers);
   }
 
   void onGetUser(GetUser event, Emitter<RemoteUserState> emit) async {
@@ -20,22 +19,6 @@ class RemoteUserBloc extends Bloc<RemoteUserEvent, RemoteUserState> {
     );
     if (dataState is DataSuccess && dataState.data != null) {
       emit(RemoteUserLoaded(dataState.data!));
-    }
-    if (dataState is DataFailed) {
-      emit(RemoteUserError(dataState.error!));
-    }
-  }
-
-  void onGetUsers(GetUsers event, Emitter<RemoteUserState> emit) async {
-    emit(const RemoteUsersLoading());
-    final dataState = await _userUseCases.getUsers(
-        accessToken: event.accessToken,
-        orderByAlphabets: event.orderByAlphabets,
-        search: event.search,
-        limit: event.limit,
-        page: event.page);
-    if (dataState is DataSuccess && dataState.data != null) {
-      emit(RemoteUsersLoaded(dataState.data!));
     }
     if (dataState is DataFailed) {
       emit(RemoteUserError(dataState.error!));

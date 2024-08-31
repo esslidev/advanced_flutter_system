@@ -12,27 +12,4 @@ class UserUseCases {
   }) async {
     return await repository.getUser(accessToken: accessToken);
   }
-
-  Future<DataState<List<UserEntity>>> getUsers({
-    required String accessToken,
-    bool orderByAlphabets = false,
-    String? search,
-    int limit = 10,
-    int page = 1,
-  }) async {
-    return await repository.getUsers(
-        accessToken: accessToken,
-        orderByAlphabets: orderByAlphabets,
-        search: search,
-        limit: limit,
-        page: page);
-  }
-
-  /*Future<DataState<DataResponseEntity>> setUser(UserModel user) async {
-    return await repository.setUser(user);
-  }*/
-
-  /*Future<DataState<UserEntity>> updateUser(UserModel user) async {
-    return await repository.updateUser(user);
-  }*/
 }

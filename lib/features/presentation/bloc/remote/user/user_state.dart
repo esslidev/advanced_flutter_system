@@ -6,11 +6,10 @@ import '../../../../domain/entities/user.dart';
 
 abstract class RemoteUserState extends Equatable {
   final UserEntity? user;
-  final List<UserEntity>? users;
   final DataResponseEntity? response;
   final DioException? error;
 
-  const RemoteUserState({this.user, this.users, this.error, this.response});
+  const RemoteUserState({this.user, this.error, this.response});
 
   @override
   List<Object> get props => [user ?? '', response ?? '', error ?? ''];
@@ -27,15 +26,7 @@ class RemoteUserLoading extends RemoteUserState {
 }
 
 class RemoteUserLoaded extends RemoteUserState {
-  const RemoteUserLoaded(UserEntity user) : super(user: user);
-}
-
-class RemoteUsersLoading extends RemoteUserState {
-  const RemoteUsersLoading();
-}
-
-class RemoteUsersLoaded extends RemoteUserState {
-  const RemoteUsersLoaded(List<UserEntity> users) : super(users: users);
+  const RemoteUserLoaded(UserEntity? user) : super(user: user);
 }
 
 // saving user

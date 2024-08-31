@@ -1,4 +1,4 @@
-# Ali's Advanced Flutter System
+# Ali salem's Advanced Flutter System
 
 Welcome to my Advanced Flutter System repository! This project is built with clean architecture principles and leverages several powerful libraries and tools including BLoC, GetIt, Beamer, Retrofit, and build_runner and much more...
 
@@ -62,30 +62,30 @@ These instructions will get you a copy of the project up and running on your loc
 
 The project follows a clean architecture structure:
 
-```plaintext
+```
 └── 📁lib
     └── 📁config
         └── 📁routes
-            └── app_routes.dart
-            └── home_routes.dart
             └── 📁locations
                 └── 📁app_locations
                     └── bad_routing.dart
                     └── home_location.dart
                 └── 📁home_locations
                     └── dashboard_location.dart
-                    └── settings_location.dart
+            └── app_routes.dart
+            └── home_routes.dart
         └── 📁theme
-            └── app_themes.dart
+            └── app_style.dart
     └── 📁core
         └── 📁constants
             └── api_constants.dart
-            └── app_colors.dart
             └── app_paths.dart
+            └── app_theme.dart
             └── shared_preference_keys.dart
         └── 📁enums
-            └── api_enums.dart
+            └── theme_enums.dart
             └── user.dart
+            └── widget_enums.dart
         └── 📁resources
             └── data_state.dart
             └── menu_model.dart
@@ -96,10 +96,11 @@ The project follows a clean architecture structure:
             └── events_util.dart
             └── localization_service.dart
             └── navigation_util.dart
+            └── network_util.dart
             └── prefs_util.dart
             └── responsive_screen_adapter.dart
             └── responsive_size_adapter.dart
-            └── route_path_service.dart
+            └── third_party_auth_util.dart
     └── 📁features
         └── 📁data
             └── 📁data_sources
@@ -119,7 +120,7 @@ The project follows a clean architecture structure:
                 └── user.dart
         └── 📁domain
             └── 📁entities
-                └── auth_response.dart
+                └── credentials.dart
                 └── data_response.dart
                 └── user.dart
             └── 📁repository
@@ -130,11 +131,16 @@ The project follows a clean architecture structure:
                 └── user.dart
         └── 📁presentation
             └── 📁bloc
-                └── 📁app_blocs
+                └── 📁app
+                    └── 📁language
                     └── 📁route
                         └── route_bloc.dart
                         └── route_event.dart
                         └── route_state.dart
+                    └── 📁theme
+                        └── theme_bloc.dart
+                        └── theme_event.dart
+                        └── theme_state.dart
                 └── 📁local
                 └── 📁remote
                     └── 📁auth
@@ -146,29 +152,34 @@ The project follows a clean architecture structure:
                         └── user_event.dart
                         └── user_state.dart
             └── 📁overlays
-                └── 📁busy
-                    └── busy.dart
+                └── 📁dropdown
+                    └── dropdown.dart
                 └── 📁error
                     └── error.dart
+                └── 📁loading
+                    └── loading.dart
             └── 📁screens
                 └── 📁bad_routing
                     └── bad_routing.dart
-                └── 📁dashboard
-                    └── dashboard.dart
                 └── 📁home
                     └── 📁components
-                        └── home_navigator.dart
-                        └── top_bar.dart
+                    └── 📁dashboard
+                        └── dashboard.dart
                     └── home.dart
-                └── 📁settings
-                    └── settings.dart
             └── 📁widgets
-                └── bread_crumbs.dart
-                └── custom_button.dart
-                └── custom_dropdown.dart
-                └── custom_table.dart
-                └── custom_text_field.dart
-                └── field.dart
+                └── 📁common
+                    └── custom_button.dart
+                    └── custom_display.dart
+                    └── custom_field.dart
+                    └── custom_line.dart
+                    └── custom_table.dart
+                    └── custom_text_field.dart
+                    └── custom_text.dart
+                    └── custom_tooltip.dart
+                └── 📁features
+                    └── bread_crumbs.dart
+                    └── custom_navigation_indicator.dart
+                    └── global_card.dart
     └── locator.dart
     └── main.dart
 ```

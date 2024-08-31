@@ -1,8 +1,7 @@
 import '../../../core/resources/data_state.dart';
 import '../../data/models/user_model.dart';
-import '../entities/auth_response.dart';
+import '../entities/credentials.dart';
 
 abstract class AuthRepository {
-  Future<DataState<AuthResponseEntity>> signIn(UserModel user);
-  Future<DataState<AuthResponseEntity>> renewAccess(String renewToken);
+  Future<DataState<CredentialsEntity>> signIn(UserModel user);
 }

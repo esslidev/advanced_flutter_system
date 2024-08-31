@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/theme/app_themes.dart';
-import '../../../../core/constants/app_colors.dart';
+import '../../../../config/theme/app_style.dart';
+import '../../../../core/constants/app_theme.dart';
 import '../../../../core/util/localization_service.dart';
 import '../../../../core/util/responsive_screen_adapter.dart';
 import '../../../../core/util/responsive_size_adapter.dart';
@@ -59,33 +59,32 @@ class ErrorOverlay {
                     localizationService
                         .translate('errorScreen.defaultStatusCode'),
                 textAlign: TextAlign.center,
-                style: AppThemes.headline.copyWith(
-                    fontSize: R.size(60),
-                    letterSpacing: R.size(5),
-                    color: AppColors.greenGoblin.withOpacity(.8)),
+                style: AppStyle.headline.copyWith(
+                  fontSize: R.size(60),
+                  letterSpacing: R.size(5),
+                ),
               ),
               SizedBox(height: R.size(20)),
               Text(
                   error ??
                       localizationService.translate('errorScreen.defaultError'),
                   textAlign: TextAlign.center,
-                  style: AppThemes.secondaryHeadline.copyWith(
-                      fontSize: R.size(30),
-                      letterSpacing: R.size(5),
-                      color: AppColors.grayArsenic)),
+                  style: AppStyle.headline2.copyWith(
+                    fontSize: R.size(30),
+                    letterSpacing: R.size(5),
+                  )),
               SizedBox(height: R.size(20)),
               Text(
                   errorMessage ??
                       localizationService
                           .translate('errorScreen.defaultErrorMessage'),
                   textAlign: TextAlign.center,
-                  style: AppThemes.bodyText.copyWith(
-                      fontSize: R.size(25), color: AppColors.grayArsenic)),
+                  style: AppStyle.bodyText.copyWith(fontSize: R.size(25))),
               SizedBox(height: R.size(20)),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: AppColors.greenGoblin,
+                  backgroundColor: AppTheme.colors.greenDarkTeal,
                   elevation: 0,
                   padding: R.padding(20),
                   shape: RoundedRectangleBorder(

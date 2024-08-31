@@ -5,8 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'config/routes/app_routes.dart';
-import 'config/theme/app_themes.dart';
-import 'features/presentation/bloc/app_blocs/route/route_bloc.dart';
+import 'config/theme/app_style.dart';
+import 'features/presentation/bloc/app/route/route_bloc.dart';
+import 'features/presentation/bloc/app/theme/theme_bloc.dart';
 import 'features/presentation/bloc/remote/auth/auth_bloc.dart';
 import 'features/presentation/bloc/remote/user/user_bloc.dart';
 import 'locator.dart';
@@ -16,7 +17,9 @@ Future<void> main() async {
 
   // Perform setup and initialization
   await setupLocator();
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  /* await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );*/
 
   // Restrict the app to portrait mode
   await SystemChrome.setPreferredOrientations([
@@ -39,6 +42,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AppRouteBloc>(
             create: (context) => locator<AppRouteBloc>()),
+        BlocProvider<AppThemeBloc>(
+            create: (context) => locator<AppThemeBloc>()),
         BlocProvider<RemoteAuthBloc>(
             create: (context) => locator<RemoteAuthBloc>()),
         BlocProvider<RemoteUserBloc>(
@@ -46,9 +51,11 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: AppThemes.themeData,
+        theme: AppStyle.themeData,
         supportedLocales: const [
-          Locale('en', 'EN'), // French
+          Locale('en', 'EN'), // English
+          Locale('fr', 'FR'), // French
+          Locale('de', 'DE'), // Deutsch
           // add more locales as needed
         ],
         localizationsDelegates: const [

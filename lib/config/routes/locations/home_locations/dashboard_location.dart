@@ -2,7 +2,7 @@ import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_paths.dart';
-import '../../../../features/presentation/screens/dashboard/dashboard.dart';
+import '../../../../features/presentation/screens/home/dashboard/dashboard.dart';
 
 class DashboardLocation extends BeamLocation<BeamState> {
   @override

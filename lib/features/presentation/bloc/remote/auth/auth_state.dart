@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../../domain/entities/auth_response.dart';
+import '../../../../domain/entities/credentials.dart';
 
 abstract class RemoteAuthState extends Equatable {
-  final AuthResponseEntity? authResponse;
+  final CredentialsEntity? credentials;
   final DioException? error;
 
-  const RemoteAuthState({this.authResponse, this.error});
+  const RemoteAuthState({this.credentials, this.error});
 
   @override
-  List<Object> get props => [authResponse ?? '', error ?? ''];
+  List<Object> get props => [credentials ?? '', error ?? ''];
 }
 
 // init user
@@ -24,8 +24,8 @@ class RemoteAuthSigningIn extends RemoteAuthState {
 }
 
 class RemoteAuthSignedIn extends RemoteAuthState {
-  const RemoteAuthSignedIn(AuthResponseEntity? authResponse)
-      : super(authResponse: authResponse);
+  const RemoteAuthSignedIn(CredentialsEntity? credentials)
+      : super(credentials: credentials);
 }
 
 class RemoteAuthError extends RemoteAuthState {

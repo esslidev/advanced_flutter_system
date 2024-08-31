@@ -29,6 +29,9 @@ dependencies:
   logger: ^1.1.0
   retrofit: ^4.0.3
   shared_preferences: ^2.2.2
+  url_launcher: ^6.3.0
+  fl_chart: ^0.68.0
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:
@@ -42,66 +45,125 @@ dev_dependencies:
 
 flutter:
   assets:
+    - assets/files/
     - assets/vectors/
     - assets/images/
     - assets/icons/
     - assets/translations/
   fonts:
-    - family: Roboto
+    - family: barlow-condensed
       fonts:
-        - asset: assets/fonts/roboto-bold.ttf
-          weight: 700
-        - asset: assets/fonts/roboto-regular.ttf
-        - asset: assets/fonts/roboto-italic.ttf
-          style: italic
-        - asset: assets/fonts/roboto-bolditalic.ttf
-          style: italic
-          weight: 700
-    - family: Work-Sans
-      fonts:
-        - asset: assets/fonts/work-sans-thin.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-thin.ttf
           weight: 100
-        - asset: assets/fonts/work-sans-thinitalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-thinitalic.ttf
           weight: 100
           style: italic
-        - asset: assets/fonts/work-sans-extralight.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-extralight.ttf
           weight: 200
-        - asset: assets/fonts/work-sans-extralightitalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-extralightitalic.ttf
           weight: 200
           style: italic
-        - asset: assets/fonts/work-sans-light.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-light.ttf
           weight: 300
-        - asset: assets/fonts/work-sans-lightitalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-lightitalic.ttf
           weight: 300
           style: italic
-        - asset: assets/fonts/work-sans-regular.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-regular.ttf
           weight: 400
-        - asset: assets/fonts/work-sans-regularitalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-regularitalic.ttf
           weight: 400
           style: italic
-        - asset: assets/fonts/work-sans-medium.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-medium.ttf
           weight: 500
-        - asset: assets/fonts/work-sans-mediumitalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-mediumitalic.ttf
           weight: 500
           style: italic
-        - asset: assets/fonts/work-sans-semibold.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-semibold.ttf
           weight: 600
-        - asset: assets/fonts/work-sans-semibolditalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-semibolditalic.ttf
           weight: 600
           style: italic
-        - asset: assets/fonts/work-sans-bold.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-bold.ttf
           weight: 700
-        - asset: assets/fonts/work-sans-bolditalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-bolditalic.ttf
           weight: 700
           style: italic
-        - asset: assets/fonts/work-sans-extrabold.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-extrabold.ttf
           weight: 800
-        - asset: assets/fonts/work-sans-extrabolditalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-extrabolditalic.ttf
           weight: 800
           style: italic
-        - asset: assets/fonts/work-sans-black.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-black.ttf
           weight: 900
-        - asset: assets/fonts/work-sans-blackitalic.ttf
+        - asset: assets/fonts/barlow_condensed/barlow-condensed-blackitalic.ttf
+          weight: 900
+          style: italic
+
+    - family: roboto-mono
+      fonts:
+        - asset: assets/fonts/roboto_mono/roboto-mono-thin.ttf
+          weight: 100
+        - asset: assets/fonts/roboto_mono/roboto-mono-thinitalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/roboto_mono/roboto-mono-extralight.ttf
+          weight: 200
+        - asset: assets/fonts/roboto_mono/roboto-mono-extralightitalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/roboto_mono/roboto-mono-light.ttf
+          weight: 300
+        - asset: assets/fonts/roboto_mono/roboto-mono-lightitalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/roboto_mono/roboto-mono-regular.ttf
+          weight: 400
+        - asset: assets/fonts/roboto_mono/roboto-mono-medium.ttf
+          weight: 500
+        - asset: assets/fonts/roboto_mono/roboto-mono-mediumitalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/roboto_mono/roboto-mono-semibold.ttf
+          weight: 600
+        - asset: assets/fonts/roboto_mono/roboto-mono-semibolditalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/roboto_mono/roboto-mono-bold.ttf
+          weight: 700
+        - asset: assets/fonts/roboto_mono/roboto-mono-bolditalic.ttf
+          weight: 700
+          style: italic
+
+    - family: analogue-reduced
+      fonts:
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-thin.otf
+          weight: 100
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-thinoblique.otf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-light.otf
+          weight: 300
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-lightoblique.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-regular.otf
+          weight: 400
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-oblique.otf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-medium.otf
+          weight: 500
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-mediumoblique.otf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-bold.otf
+          weight: 700
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-boldoblique.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-black.otf
+          weight: 900
+        - asset: assets/fonts/analogue_reduced/analogue-reduced-blackoblique.otf
           weight: 900
           style: italic
 
@@ -109,7 +171,7 @@ flutter:
 
 flutter_launcher_icons:
   adaptive_icon_background: '#ffffff'
-  android: launcher_icon
+  android: true
   image_path: assets/icons/icon.png
   ios: true
   min_sdk: 21

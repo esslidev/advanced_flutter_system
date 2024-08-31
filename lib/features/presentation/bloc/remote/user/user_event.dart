@@ -12,21 +12,6 @@ class GetUser extends RemoteUserEvent {
   });
 }
 
-class GetUsers extends RemoteUserEvent {
-  String accessToken;
-  bool orderByAlphabets;
-  String? search;
-  int limit;
-  int page;
-
-  GetUsers(
-      {required this.accessToken,
-      this.orderByAlphabets = false,
-      this.search,
-      this.limit = 10,
-      this.page = 1});
-}
-
 class SetUser extends RemoteUserEvent {
   final UserModel user;
 

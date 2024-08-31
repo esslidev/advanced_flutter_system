@@ -21,7 +21,7 @@ class _AuthApiService implements AuthApiService {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<AuthResponseModel>> signIn({
+  Future<HttpResponse<CredentialsModel>> signIn({
     required String apiKey,
     required UserModel user,
     String contentType = 'application/json',
@@ -36,7 +36,7 @@ class _AuthApiService implements AuthApiService {
     final _data = <String, dynamic>{};
     _data.addAll(user.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<AuthResponseModel>>(Options(
+        _setStreamType<HttpResponse<CredentialsModel>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -53,28 +53,27 @@ class _AuthApiService implements AuthApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = AuthResponseModel.fromJson(_result.data!);
+    final value = CredentialsModel.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }
 
   @override
-  Future<HttpResponse<AuthResponseModel>> renewAccess({
+  Future<HttpResponse<CredentialsModel>> renewAccessToken({
     required String apiKey,
-    required String renewToken,
+    required CredentialsModel credentials,
     String contentType = 'application/json',
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
       r'apiKey': apiKey,
-      r'renewToken': renewToken,
       r'Content-Type': contentType,
     };
     _headers.removeWhere((k, v) => v == null);
-    final Map<String, dynamic>? _data = null;
+    final _data = credentials;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<AuthResponseModel>>(Options(
+        _setStreamType<HttpResponse<CredentialsModel>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -91,7 +90,7 @@ class _AuthApiService implements AuthApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = AuthResponseModel.fromJson(_result.data!);
+    final value = CredentialsModel.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

@@ -12,16 +12,16 @@ abstract class AuthApiService {
   factory AuthApiService(Dio dio) = _AuthApiService;
 
   @POST("/api/auth/adminSignIn")
-  Future<HttpResponse<AuthResponseModel>> signIn({
+  Future<HttpResponse<CredentialsModel>> signIn({
     @Header("apiKey") required String apiKey,
     @Body() required UserModel user,
     @Header('Content-Type') String contentType = 'application/json',
   });
 
   @POST("/api/auth/renewAccess")
-  Future<HttpResponse<AuthResponseModel>> renewAccess({
+  Future<HttpResponse<CredentialsModel>> renewAccessToken({
     @Header("apiKey") required String apiKey,
-    @Header("renewToken") required String renewToken,
+    @Body() required CredentialsModel credentials,
     @Header('Content-Type') String contentType = 'application/json',
   });
 }
